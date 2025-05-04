@@ -91,6 +91,7 @@ If you're not sure what you're doing, we recommend starting with **Message CSS**
 ## Known Issues
 
 - In the **Character-Specific Styles** section, the labels for **Main Colors** (e.g., Primary Color, Background Color) do not dynamically reflect whether the style is for a user persona or a character. This is a cosmetic issue only and does **not** affect functionality or variable injection.
+- When a character's name is changed, their CSC settings may become inaccessible. You’ll need to manually go to **Character-Specific Styles**, find the old entry, delete it, and create a new one.
 
 # Special Thanks
 Huge appreciation to the following projects and creators whose work inspired and informed this extension:
