@@ -2,6 +2,12 @@
 
 A third-party extension for SillyTavern that brings advanced styling options to your characters and personas. Customize the look and feel of individual messages with precision, using per-character color settings and custom CSS.
 
+![](https://github.com/RivelleDays/SillyTavern-CharacterStyleCustomizer/blob/main/.github/ui_overview.png)
+
+| Character Message | Group Chat |
+|-------------------|-------------------|
+| <img src="https://github.com/RivelleDays/SillyTavern-CharacterStyleCustomizer/blob/main/.github/preview1.png"> | <img src="https://github.com/RivelleDays/SillyTavern-CharacterStyleCustomizer/blob/main/.github/preview2.png"> |
+
 ## Features
 
 - **Main Colors**: Set base colors (Primary, Secondary, Backgrounds) using injected CSS variables. Includes **Element Color Mapping** for power users to define consistent styling across roles without repetitive configuration.
