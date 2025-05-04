@@ -1,0 +1,727 @@
+/**
+ * Hate CSS ; v ;
+ */
+
+/* Color picker component */
+.simple-color-picker {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    position: relative;
+}
+
+.color-preview {
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+    min-height: 24px;
+    border: 1px solid color-mix(in srgb, var(--SmartThemeBodyColor) 10%, transparent);
+    border-radius: 3px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.1s ease;
+}
+
+.color-preview:hover {
+    transform: scale(1.05);
+}
+
+.color-preview:active {
+    transform: scale(0.95);
+}
+
+.color-preview.empty-color {
+    background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 5px,
+        color-mix(in srgb, var(--SmartThemeBodyColor) 10%, transparent) 5px,
+        color-mix(in srgb, var(--SmartThemeBodyColor) 10%, transparent) 5px 10px
+    );
+}
+
+.color-input {
+    width: 80px;
+    padding: 2px 4px;
+    border: 1px solid var(--SmartThemeBorderColor);
+    border-radius: 3px;
+    background: var(--black30a);
+    color: var(--SmartThemeBodyColor);
+    font-size: calc(var(--mainFontSize) * 0.9);
+    text-transform: uppercase;
+}
+
+/* Help section styles */
+.csc-help-container {
+    margin: 10px 0;
+    border: 1px solid color-mix(in srgb, var(--SmartThemeBodyColor) 10%, transparent);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.csc-help-header {
+    padding: 6px 10px;
+    background: color-mix(in srgb, var(--SmartThemeBodyColor) 10%, transparent);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    font-size: 0.9em;
+}
+
+.csc-help-header i:first-child {
+    margin-right: 6px;
+    opacity: 0.8;
+    font-size: 0.9em;
+}
+
+.csc-help-chevron {
+    margin-left: auto;
+    transition: transform 0.3s;
+    font-size: 0.75em;
+    opacity: 0.8;
+}
+
+.csc-help-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+    padding: 0 10px;
+    font-size: 0.85em;
+    line-height: 1.4;
+}
+
+.csc-help-content.expanded {
+    max-height: 500px;
+    padding: 10px;
+}
+
+.csc-example-block {
+    margin: 8px 0;
+    background: var(--black70a);
+    border-radius: 3px;
+    padding: 6px;
+    border: 1px solid var(--SmartThemeBorderColor);
+}
+
+.csc-example-title {
+    font-weight: bold;
+    margin-bottom: 4px;
+    font-size: 0.9em;
+    color: var(--SmartThemeBodyColor);
+    border-bottom: 1px solid var(--SmartThemeBorderColor);
+    padding: 0 5px;
+    padding-bottom: 5px;
+}
+
+.csc-help-content pre {
+    font-family: monospace;
+    white-space: pre-wrap;
+    background: var(--black70a);
+    border-radius: 3px;
+    margin: 10px 5px;
+    font-size: small;
+}
+
+/* Warning message */
+#csc-settings-warning {
+    margin: 10px 0;
+    padding: 5px 12px;
+    background: color-mix(in srgb, var(--SmartThemeQuoteColor) 5%, transparent 0%);
+    border-left: 3px solid var(--SmartThemeQuoteColor);
+    line-height: 1.5;
+    font-size: 0.9em;
+}
+
+/* CSS field containers */
+.cs-style-css-field-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.cs-style-css-info {
+    font-size: 0.85em;
+    margin: 5px 0;
+    line-height: 1.3;
+    color: var(--SmartThemeQuoteColor);
+}
+
+.cs-style-toggle-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 6px;
+}
+
+.cs-style-toggle-container label {
+    margin-left: 8px;
+    font-size: 0.9em;
+    opacity: 0.9;
+}
+
+/* Settings sections */
+.cs-style-settings-block {
+    margin-bottom: 15px;
+}
+
+.cs-style-section {
+    border: 1px solid var(--SmartThemeBorderColor);
+    border-radius: 5px;
+    margin-bottom: 15px;
+    overflow: hidden;
+}
+
+.cs-style-section-header {
+    background-color: color-mix(in srgb, var(--SmartThemeBodyColor) 10%, transparent);
+    padding: 5px 12px;
+    border-bottom: 1px solid var(--SmartThemeBorderColor);
+}
+
+.cs-style-section-toggle {
+    cursor: pointer;
+    user-select: none;
+}
+
+.cs-style-section-toggle h4 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+}
+
+.cs-style-section-content {
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 10px;
+    transition: all 0.3s ease;
+}
+
+.cs-style-section.expanded .cs-style-section-content {
+    max-height: 2000px;
+    padding: 10px;
+}
+
+.cs-style-section-content.visible {
+    display: block;
+}
+
+.cs-style-section-header small {
+    opacity: 0.7;
+}
+
+.cs-style-description {
+    opacity: 0.7;
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 0.9em;
+}
+
+/* Color items grid layout */
+.cs-style-color-item {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto;
+    grid-column-gap: 10px;
+    margin-bottom: 16px;
+}
+
+.cs-style-color-row {
+    grid-column: 1;
+    grid-row: 1;
+    display: flex;
+    align-items: center;
+}
+
+.cs-style-color-label {
+    grid-column: 2;
+    grid-row: 1;
+    margin: 0;
+    align-self: center;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.cs-style-color-description {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    margin-top: 5px;
+    margin-bottom: 0;
+    opacity: 0.65;
+    font-size: small;
+    letter-spacing: 0.5px;
+}
+
+/* Mapping styles */
+.cs-style-mapping-item {
+    margin-bottom: 16px;
+}
+
+.cs-style-mapping-label {
+    display: block;
+    margin-bottom: 4px;
+    font-weight: bold;
+}
+
+.cs-style-mapping-description {
+    display: block;
+    font-size: 0.85em;
+    margin-bottom: 8px;
+    opacity: 0.7;
+    white-space: pre-wrap;
+}
+
+/* Advanced settings section */
+.cs-style-advanced-settings {
+    margin-top: 10px;
+    border-top: 1px dashed color-mix(in srgb, var(--SmartThemeBodyColor) 10%, transparent);
+    padding-top: 10px;
+}
+
+.cs-style-advanced-toggle {
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    opacity: 0.8;
+    font-size: small;
+    letter-spacing: 0.25px;
+    transition: all 0.5s ease;
+}
+
+.cs-style-advanced-toggle:hover {
+    opacity: 1;
+}
+
+.cs-style-advanced-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.5s ease;
+}
+
+.cs-style-advanced-content.expanded {
+    max-height: 1000px;
+}
+
+/* Tab styles */
+.cs-style-tabs {
+    margin-top: 15px;
+}
+
+.cs-style-tab-buttons {
+    display: flex;
+    border-bottom: 1px solid var(--SmartThemeBorderColor);
+    margin-bottom: 15px;
+}
+
+.cs-style-tab-button {
+    padding: 8px 10px;
+    background: none;
+    border: none;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    color: var(--SmartThemeBodyColor);
+    opacity: 0.7;
+    border-bottom: 1px solid transparent;
+    transition: all 0.5s ease;
+}
+
+.cs-style-tab-button.active {
+    opacity: 1;
+    border-bottom: 1px solid var(--SmartThemeBodyColor);
+}
+
+.cs-style-tab-content {
+    display: none;
+}
+
+.cs-style-tab-content.active {
+    display: block;
+}
+
+/* Character selector */
+.cs-style-character-selector {
+    margin-bottom: 15px;
+}
+
+.cs-style-select-container {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.cs-style-select-container select {
+    flex: 1;
+}
+
+/* Button styles */
+.cs-style-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.cs-style-buttons .menu_button i {
+    margin-right: 5px;
+}
+
+/* Header row */
+.cs-style-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Custom indicator */
+.cs-style-has-custom {
+    position: relative;
+}
+
+.cs-style-has-custom::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 8px;
+    height: 8px;
+    background-color: var(--SmartThemeAccentColor);
+    border-radius: 50%;
+}
+
+/* Character Card styles */
+.cs-card-style-settings {
+    margin-top: 15px;
+    width: 100%;
+}
+
+.cs-card-section {
+    border: 1px solid color-mix(in srgb, var(--SmartThemeBodyColor) 10%, transparent);
+    border-radius: 5px;
+    margin: 10px 0;
+    overflow: hidden;
+}
+
+.cs-card-section-header {
+    background-color: color-mix(in srgb, var(--SmartThemeBodyColor) 10%, transparent);
+    padding: 5px 12px;
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.5s ease;
+}
+
+.cs-card-section-content {
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 10px;
+    transition: all 0.3s ease;
+}
+
+.cs-card-section.expanded .cs-card-section-content {
+    max-height: 1000px;
+    padding: 10px;
+}
+
+.cs-card-section.expanded .cs-card-chevron {
+    transform: rotate(180deg);
+}
+
+.cs-card-chevron {
+    transition: transform 0.3s ease;
+}
+
+.cs-card-buttons {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+/* Persona styles */
+.cs-persona-style-option {
+    margin: 10px 0;
+    width: 100%;
+}
+
+.cs-card-section-title {
+    cursor: pointer;
+}
+
+.cs-card-section-title h4 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cs-card-section-title small {
+    opacity: 0.7;
+    display: block;
+}
+
+/* Fix content padding */
+#card-style-content {
+    padding: 0 !important;
+}
+
+textarea#character-custom-css,
+textarea#character-global-css,
+textarea#persona-custom-css,
+textarea#persona-global-css,
+textarea#card-custom-css,
+textarea#card-global-css {
+    font-size: calc(var(--mainFontSize) * 0.95);
+    line-height: 1.2;
+}
+
+
+/**
+ * CSS Editor Styles for Character Style Customizer - SillyTavern Style
+ */
+
+/* Edit Button Styles */
+.csc-edit-button-container {
+    text-align: right;
+    margin-top: 5px;
+}
+
+.csc-edit-button {
+    width: fit-content;
+    font-size: calc(var(--mainFontSize) * 0.85);
+    padding: 3px 8px;
+    margin: 8px 0;
+    opacity: 0.8;
+    transition: all 0.5s ease;
+}
+.cs-style-tabs .csc-edit-button {
+    margin: 3px 0;
+}
+
+.csc-edit-button:hover {
+    opacity: 1;
+    filter: brightness(120%);
+}
+
+.csc-edit-button i {
+    margin-right: 5px;
+}
+
+/* Editor Panel Styles */
+#csc-fullscreen-editor {
+    display: none;
+    border: 1px solid var(--SmartThemeBorderColor);
+    border-radius: 10px;
+    overflow: hidden;
+    top: calc(var(--topBarBlockSize)) !important;
+    width: calc((100dvw - var(--sheldWidth)) / 2);
+    max-height: calc(100dvh - var(--topBarBlockSize));
+    z-index: 10000;
+
+    @media screen and (max-width: 1000px) {
+        min-height: calc(100dvh - var(--topBarBlockSize)) !important;
+    }
+}
+body:has(.mes[data-avatar]) #csc-fullscreen-editor {
+    border-radius: 0;
+    border-top: 1px solid color-mix(in srgb, var(--SmartThemeBodyColor) 25%, transparent) !important;
+}
+
+#csc-fullscreen-editor.visible {
+    display: block;
+    overflow: auto;
+}
+
+#csc-fullscreen-editor .dragClose {
+    cursor: pointer;
+    opacity: 0.7;
+    transition: all 0.5s ease;
+    filter: none;
+}
+
+#csc-fullscreen-editor .dragClose:hover {
+    opacity: 1;
+}
+
+/* Editor Container */
+.csc-editor-container {
+    display: flex;
+    flex-direction: column;
+    height: calc(100% - 20px);
+    margin-top: 15px;
+    padding: 10px;
+}
+
+/* Examples Toggle and Container */
+.csc-examples-toggle {
+    cursor: pointer;
+    color: var(--SmartThemeQuoteColor);
+    display: inline-block;
+    padding: 5px;
+    border-radius: 4px;
+    font-size: calc(var(--mainFontSize) * 0.9);
+    margin-bottom: 10px;
+    opacity: 0.8;
+    border: 1px solid;
+    transition: all 0.5s ease;
+}
+
+.csc-examples-toggle:hover {
+    opacity: 1;
+}
+
+.csc-examples-toggle i {
+    margin-right: 5px;
+}
+
+.csc-examples-content {
+    display: none;
+    margin-bottom: 10px;
+    background-color: var(--SmartThemeBlurTintColor);
+    backdrop-filter: blur(var(--SmartThemeBlurStrength));
+    max-height: 30dvh;
+    overflow-y: auto;
+}
+
+/* Example sections */
+.csc-examples-section {
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.csc-examples-section:last-child {
+    margin-bottom: 0;
+}
+
+.csc-examples-section h4 {
+    margin: 0 0 5px 0;
+    color: var(--SmartThemeQuoteColor);
+    font-size: calc(var(--mainFontSize) * 0.9);
+    opacity: 0.9;
+}
+
+.csc-examples-section pre {
+    padding: 8px;
+    border-radius: 4px;
+    margin: 0;
+    white-space: pre-wrap;
+    font-family: monospace;
+    font-size: calc(var(--mainFontSize) * 0.85);
+    border: 1px solid var(--SmartThemeBorderColor);
+}
+
+/* Main Textarea */
+#csc-fullscreen-textarea {
+    width: 100%;
+    height: calc(100% - 50px);
+    resize: none;
+    font-family: monospace;
+    font-size: calc(var(--mainFontSize) * 0.9);
+    padding: 10px;
+    color: var(--SmartThemeBodyColor);
+    border: 1px solid var(--SmartThemeBorderColor);
+    border-radius: 5px;
+    outline: none;
+    line-height: 1.5;
+    tab-size: 4;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    overflow-x: hidden;
+
+    @media screen and (max-width: 1000px) {
+        height: 68dvh;
+    }
+}
+
+/* Buttons Container */
+.csc-editor-buttons {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.csc-editor-buttons button {
+    padding: 8px 15px;
+    border-radius: 10px;
+    font-size: calc(var(--mainFontSize) * 0.9);
+    transition: all 0.2s;
+    border: 1px solid var(--SmartThemeBorderColor);
+    gap: 5px;
+}
+
+.csc-editor-buttons button:hover {
+    filter: brightness(120%);
+}
+
+#csc-editor-save {
+    margin-left: 10px;
+}
+
+/* Responsive Adjustments */
+@media screen and (max-width: 1000px) {
+    #csc-fullscreen-editor {
+        width: 90vw !important;
+        max-width: none;
+    }
+
+    .csc-editor-buttons button {
+        padding: 6px 10px;
+        font-size: calc(var(--mainFontSize) * 0.85);
+    }
+}
+
+/* Optional fallback styles for modal version */
+.csc-fallback-editor-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.csc-fallback-editor-modal {
+    background-color: var(--SmartThemeBlurTintColor);
+    backdrop-filter: blur(var(--SmartThemeBlurStrength));
+    border: 1px solid var(--SmartThemeBorderColor);
+    border-radius: 10px;
+    width: 80%;
+    max-width: 800px;
+    height: 80%;
+    max-height: 600px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.csc-fallback-editor-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    border-bottom: 1px solid var(--SmartThemeBorderColor);
+    padding-bottom: 5px;
+}
+
+.csc-fallback-editor-title {
+    font-size: calc(var(--mainFontSize) * 1.1);
+    font-weight: bold;
+    opacity: 0.9;
+}
+
+.csc-fallback-editor-close {
+    cursor: pointer;
+    opacity: 0.7;
+    font-size: calc(var(--mainFontSize) * 1.2);
+    background: none;
+    border: none;
+}
+
+.csc-fallback-editor-close:hover {
+    opacity: 1;
+}

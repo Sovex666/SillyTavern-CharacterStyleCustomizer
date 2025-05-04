@@ -1,0 +1,14 @@
+{
+    "display_name": "Character Style Customizer",
+    "description": "Customize text styles for each character and persona with different colors.",
+    "loading_order": 15,
+    "requires": [],
+    "optional": [],
+    "js": "index.js",
+    "css": "style.css",
+    "author": "Rivelle <rivelle.days@gmail.com>",
+    "version": "0.0.1",
+    "license": "AGPL-3.0",
+    "homepage": "https://github.com/RivelleDays/SillyTavern-CharacterStyleCustomizer",
+    "auto_update": true
+}
