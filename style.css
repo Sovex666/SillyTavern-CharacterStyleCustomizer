@@ -1,8 +1,9 @@
+/* General Styling & Variables (if any were used) */
 /**
  * Hate CSS ; v ;
  */
 
-/* Color picker component */
+/* --- Color Picker Component (Existing Style) --- */
 .simple-color-picker {
     display: flex;
     gap: 6px;
@@ -53,7 +54,7 @@
     text-transform: uppercase;
 }
 
-/* Help section styles */
+/* --- Help Section Styles (Existing Style) --- */
 .csc-help-container {
     margin: 10px 0;
     border: 1px solid color-mix(in srgb, var(--SmartThemeBodyColor) 10%, transparent);
@@ -134,7 +135,7 @@
     font-size: 0.9em;
 }
 
-/* CSS field containers */
+/* --- CSS Field Containers (Existing Style) --- */
 .cs-style-css-field-container {
     display: flex;
     flex-direction: column;
@@ -171,6 +172,7 @@
     overflow: hidden;
 }
 
+/* --- Settings Sections (Existing Style) --- */
 /*
  * Note: The parent container of .cs-card-section-header and the "Global CSS" textarea
  * needs to have the ID "custom-styles-container" for these specificity changes to take effect.
@@ -469,7 +471,7 @@ textarea#card-global-css {
     line-height: 1.2;
 }
 
-
+/* --- CSS Editor Styles for Character Style Customizer (Existing Style) --- */
 /**
  * CSS Editor Styles for Character Style Customizer - SillyTavern Style
  */
@@ -718,3 +720,87 @@ body:has(.mes[data-avatar]) #csc-fullscreen-editor {
 .csc-fallback-editor-close:hover {
     opacity: 1;
 }
+
+
+/* --- CHAT EFFECTS FEATURES --- */
+
+/* 1. Sentiment Analysis Borders --- */
+.positive-sentiment-border {
+    border: 2px solid green !important; /* Using !important to ensure visibility over other borders */
+    padding: 8px; /* Add some padding so border isn't too close to text */
+    margin-bottom: 5px; /* Space between messages */
+    border-radius: 4px; /* Slightly rounded border */
+}
+.negative-sentiment-border {
+    border: 2px solid red !important;
+    padding: 8px;
+    margin-bottom: 5px;
+    border-radius: 4px;
+}
+.neutral-sentiment-border {
+    border: 2px solid gray !important;
+    padding: 8px;
+    margin-bottom: 5px;
+    border-radius: 4px;
+}
+
+/* 2. Houdini Paint API: Generative Background --- */
+.generative-background {
+    background-image: paint(generative-background);
+    --background-color: #f0f0f0; /* Default values for the worklet */
+    --circle-color: #3498db;
+    --circle-size: 5;
+    /* Ensure it has some dimensions to be visible */
+    min-height: 50px; /* Example, adjust as needed */
+    padding: 10px; /* Ensure content isn't flush against edges */
+    color: #111; /* Ensure text is readable on the default background */
+}
+/* Note: Lottie animations are styled inline via JS for width/height.
+   No specific global CSS for .lottie-container needed unless for overrides. */
+
+
+/* 3. Mood Tracker Bar --- */
+.mood-tracker-bar {
+    width: 200px;
+    height: 20px;
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    margin: 20px auto; /* Example positioning */
+    overflow: hidden; /* To contain the fill */
+    border: 1px solid #ccc;
+}
+
+.mood-tracker-fill {
+    width: 50%; /* Initial mood level */
+    height: 100%;
+    background-image: linear-gradient(to right, #ffb347, #ffcc33); /* Example: Neutral (Orange-Yellow) */
+    border-radius: 10px; /* Keep consistent with parent */
+    transition: width 0.5s ease-in-out, background-image 0.5s ease-in-out;
+}
+
+
+/* --- CHAT LOG CONTAINER FOR TESTING --- */
+#chat-log-container {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-top: 20px;
+    height: 300px; /* Fixed height to demonstrate scrolling if needed */
+    overflow-y: auto; /* Allow scrolling for many messages */
+    background-color: #f9f9f9;
+}
+
+.chat-message { /* Basic styling for individual messages in the test log */
+    padding: 8px;
+    margin-bottom: 8px;
+    border-radius: 4px;
+    background-color: #fff;
+    border: 1px solid #eee;
+}
+
+/* Styling for Lottie containers (set inline in JS but can be augmented here) */
+/* Example: if you want all lottie animations to have a specific border for debugging */
+/*
+[id^="lottie-fire-"], [id^="lottie-magic-"] {
+    border: 1px dashed blue;
+}
+*/
