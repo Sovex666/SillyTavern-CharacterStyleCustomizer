@@ -171,7 +171,11 @@
     overflow: hidden;
 }
 
-.cs-style-section-header {
+/*
+ * Note: The parent container of .cs-card-section-header and the "Global CSS" textarea
+ * needs to have the ID "custom-styles-container" for these specificity changes to take effect.
+ */
+#custom-styles-container .cs-card-section-header {
     background-color: color-mix(in srgb, var(--SmartThemeBodyColor) 10%, transparent);
     padding: 5px 12px;
     border-bottom: 1px solid var(--SmartThemeBorderColor);
@@ -401,17 +405,6 @@
     border-radius: 5px;
     margin: 10px 0;
     overflow: hidden;
-}
-
-.cs-card-section-header {
-    background-color: color-mix(in srgb, var(--SmartThemeBodyColor) 10%, transparent);
-    padding: 5px 12px;
-    cursor: pointer;
-    user-select: none;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transition: all 0.5s ease;
 }
 
 .cs-card-section-content {
