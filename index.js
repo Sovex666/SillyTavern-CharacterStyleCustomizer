@@ -3612,7 +3612,7 @@ function applyGlobalCSS(characterId) {
     }
 
     // Generate a character-specific class name for the body
-    const safeCharId = characterId.replace(/[|]/g, '-').replace(/\./g, '_');
+    const safeCharId = characterId.replace(/[|]/g, '-').replace(/\./g, '_').replace(/\s/g, '-');
     const className = `csc-global-css-${safeCharId}`;
     console.log(`[CSC] Adding global CSS class to body: ${className}`);
 
